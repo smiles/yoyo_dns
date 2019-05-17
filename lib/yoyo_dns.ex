@@ -20,6 +20,7 @@ defmodule YoyoDns do
   defp process_body(body) do
 
     body_split = String.split(body, "\n")
+                 |> List.delete("")
 
     dns = return_dns(body_split, "") 
     File.write!("/etc/bind/adserver.zones", dns)
